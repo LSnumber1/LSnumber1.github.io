@@ -12,9 +12,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="刘帅">
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="John Doe">
+    <meta name="copyright" content="刘帅">
     
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
@@ -22,15 +22,17 @@
     <meta name="description" content="目的聚合广告SDK，一般会接很多第三方广告（如Facebook、Admob等），而实际项目需求中，由于对包体积有要求，所以仅仅会接入必须的三方渠道，按此要求，则聚合广告SDK对三方对依赖，需做到可插拔式，不能对三方有强依赖，本文探索iOS的几种实现方式，并分析其优缺点。 方案一利用iOS的runtime机制，反射所有的方法调用、delegate注册等，做到对三方广告不存在明文的代码调用，以此做到可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聚合广告系列-三方聚合方式">
-<meta property="og:url" content="http://example.com/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:url" content="https://lsnumber1.github.io/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="目的聚合广告SDK，一般会接很多第三方广告（如Facebook、Admob等），而实际项目需求中，由于对包体积有要求，所以仅仅会接入必须的三方渠道，按此要求，则聚合广告SDK对三方对依赖，需做到可插拔式，不能对三方有强依赖，本文探索iOS的几种实现方式，并分析其优缺点。 方案一利用iOS的runtime机制，反射所有的方法调用、delegate注册等，做到对三方广告不存在明文的代码调用，以此做到可">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lsnumber1.github.io/Users/yipindashuai/blog/source/_posts/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/Untitled.png">
 <meta property="article:published_time" content="2022-04-04T14:16:33.000Z">
-<meta property="article:modified_time" content="2022-04-04T14:36:40.881Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2022-04-04T14:46:04.178Z">
+<meta property="article:author" content="刘帅">
 <meta property="article:tag" content="广告技术">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lsnumber1.github.io/Users/yipindashuai/blog/source/_posts/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/Untitled.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
@@ -333,7 +335,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.6k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.5k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -509,7 +511,7 @@
 
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>此种方式，可以明显看出由于需要对三方库每个方法调用进行发射，过程非常繁琐。后续维护时，需要对比三方的方法是否有变更等，无法利用到xcode的监测机制，成本较高，不推荐此种方式。</p>
 <h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>要做到可插拔效果，所以广告SDK不能对三方库的代码进行明文调用，考虑采用接口编程的方式，利用设计模式的Adapter思想，把三方的库抽离起来。广告SDK不依赖三方库SDK，通过接口维护和各个三方库的关系。</p>
-<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><p>创建个基础SDK，仅仅包含些接口文件，广告SDK、三方库封装的SDK均依赖于此基础SDK</p>
+<h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><p>创建个基础SDK，仅仅包含些接口文件，广告SDK、三方库封装的SDK均依赖于此基础SDK</p>
 <p>BaseFramework（以插屏广告示例）</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">BaseIntersitialAdapter</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line"><span class="comment">/// 通过第三方广告ID进行请求</span></span><br><span class="line"><span class="comment">/// @param adID 第三方ID</span></span><br><span class="line">- (<span class="type">void</span>)requestAd:(<span class="built_in">NSString</span> *_Nonnull)adID;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 判断广告是否可用</span></span><br><span class="line">- (<span class="type">BOOL</span>)isAdValid;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 展示广告</span></span><br><span class="line"><span class="comment">/// @param viewController 要在此界面上展示</span></span><br><span class="line">- (<span class="type">BOOL</span>)showAdWithViewController:(<span class="built_in">UIViewController</span> *_Nonnull)viewController;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 设置回调</span></span><br><span class="line">- (<span class="type">void</span>)setIntersitialDelegate:(<span class="type">id</span>&lt;BaseIntersitialDelegate&gt; _Nullable)intersitialDelegate;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 
@@ -519,13 +521,13 @@
 <p>广告SDK</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AdMobInterstitialAdTask</span> ()&lt;<span class="title">BaseIntersitialDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="type">id</span>&lt;BaseIntersitialAdapter&gt; intersitialAdTask;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AdMobInterstitialAdTask</span></span></span><br><span class="line"> </span><br><span class="line">- (<span class="type">void</span>)reuqestAd:(<span class="type">BOOL</span>) isExpectUseAdCache &#123;</span><br><span class="line">    [<span class="variable language_">super</span> reuqestAd:isExpectUseAdCache];</span><br><span class="line">    </span><br><span class="line">    Class admobIntersitialAdTaskClass = <span class="built_in">NSClassFromString</span>(<span class="string">@&quot;AdmobIntersitialAdTask&quot;</span>);</span><br><span class="line">    <span class="keyword">self</span>.intersitialAdTask = [[admobIntersitialAdTaskClass alloc] init];</span><br><span class="line">    [<span class="keyword">self</span>.intersitialAdTask setIntersitialDelegate:<span class="keyword">self</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        [<span class="keyword">self</span>.intersitialAdTask requestAd:<span class="keyword">self</span>.getAdID];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)showAd:(<span class="built_in">NSString</span> *)positionID withViewController:( <span class="built_in">UIViewController</span> *)viewController&#123;</span><br><span class="line">    [<span class="variable language_">super</span> showAd:positionID withViewController:viewController];</span><br><span class="line">    [<span class="keyword">self</span>.intersitialAdTask showAdWithViewController:viewController];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">- (<span class="type">BOOL</span>)isReady &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.intersitialAdTask == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span>.intersitialAdTask isAdValid];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>此项目的结构如下图所示：</p>
-<p>![Untitled](&#x2F;Users&#x2F;yipindashuai&#x2F;Downloads&#x2F;Export-1561a9e7-235f-41fc-92c5-32b60d0b1a39&#x2F;聚合广告系列-三方聚 449a4&#x2F;Untitled.png)</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>此项目的结构如下图所示：</p>
+<p><img src="/Users/yipindashuai/blog/source/_posts/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/Untitled.png" alt="Untitled"></p>
 <p>由此，可以看出，广告SDK、和第三方渠道没有直接的关系，广告SDK、渠道方共同依赖BaseFramework，依此达到广告SDK和渠道方解耦的目的。</p>
 <p>此方案，一个明显的问题，是需要对三方做个封装，且会对基础接口单独分装一个BaseFramework。所以如果要接10个渠道，则最终要维护的SDK数量为1+10+1 &#x3D; 12个。</p>
 <h2 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h2><p>方案三其实是方案二的变种，方法二需要多维护一个BaseFramework。在方案三中，把BaseFramework去掉，BaseFramwork中的内容移到广告SDK中，其他渠道SDK依赖广告SDK。</p>
 <p>此项目组的结构如下图所示：</p>
-<p>![Untitled](&#x2F;Users&#x2F;yipindashuai&#x2F;Downloads&#x2F;Export-1561a9e7-235f-41fc-92c5-32b60d0b1a39&#x2F;聚合广告系列-三方聚 449a4&#x2F;Untitled 1.png)</p>
+<p>![Untitled](&#x2F;Users&#x2F;yipindashuai&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;聚合广告系列-三方聚合方式&#x2F;Untitled 1.png)</p>
 <p>具体代码不再示例，从项目结构中，可以明显看出，此方案较方案二可以减少一个SDK维护。</p>
 <h2 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h2><p>思想还是Adapter模式，方案二、三其实是通过抽象接口+Adapter的形式实现。方案四是利用了iOS语言的特性，声明一个h文件，把第三方的接口信息都复制过来，然后实际调用的时候，判断下是否实现了方法即可。</p>
 <h3 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h3><p>AdMobInterstitialClass.h文件，仅仅只有接口的定义，把第三方的接口定义复制了过来</p>
@@ -550,10 +552,10 @@
     <!-- license -->
     
         <div class="license-wrapper">
-            <p>Author：<a href="http://example.com">John Doe</a>
-            <p>Link：<a href="http://example.com/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">http://example.com/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/</a>
-            <p>Publish date：<a href="http://example.com/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">April 4th 2022, 10:16:33 pm</a>
-            <p>Update date：<a href="http://example.com/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">April 4th 2022, 10:36:40 pm</a>
+            <p>Author：<a href="https://LSnumber1.github.io">刘帅</a>
+            <p>Link：<a href="https://lsnumber1.github.io/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">https://lsnumber1.github.io/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/</a>
+            <p>Publish date：<a href="https://lsnumber1.github.io/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">April 4th 2022, 10:16:33 pm</a>
+            <p>Update date：<a href="https://lsnumber1.github.io/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">April 4th 2022, 10:46:04 pm</a>
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -706,7 +708,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-number">2.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delegate%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">Delegate操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A%E7%9B%B8%E5%85%B3"><span class="toc-number">2.3.</span> <span class="toc-text">请求广告相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">3.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89"><span class="toc-number">4.</span> <span class="toc-text">方案三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E5%9B%9B"><span class="toc-number">5.</span> <span class="toc-text">方案四</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B-2"><span class="toc-number">5.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-number">5.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-number">2.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delegate%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">Delegate操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A%E7%9B%B8%E5%85%B3"><span class="toc-number">2.3.</span> <span class="toc-text">请求广告相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">3.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="toc-number">3.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">3.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89"><span class="toc-number">4.</span> <span class="toc-text">方案三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E5%9B%9B"><span class="toc-number">5.</span> <span class="toc-text">方案四</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B-2"><span class="toc-number">5.1.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-number">5.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -821,9 +823,9 @@
         siteMetaRoot = '/'
     }
     var siteMeta = {
-        url: "http://example.com",
+        url: "https://LSnumber1.github.io",
         root: siteMetaRoot,
-        author: "John Doe"
+        author: "刘帅"
     }
 </script>
 
