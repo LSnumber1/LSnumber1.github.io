@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://lsnumber1.github.io/tags/%E5%B9%BF%E5%91%8A%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:url" content="https://lsnumber1.github.io/tags/%E9%80%9A%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="刘帅">
@@ -428,29 +428,51 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">
+            <a class="abstract-title" href="/2022/04/17/Word-Press%E6%8E%A5%E5%85%A5%E9%92%89%E9%92%89%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
                 
-                <span class="abstract-title-text">聚合广告系列-三方聚合方式</span>
+                <span class="abstract-title-text">Word Press接入钉钉扫码登录</span>
             </a>
             <div class="abstract-content">
-                目的聚合广告SDK，一般会接很多第三方广告（如Facebook、Admob等），而实际项目需求中，由于对包体积有要求，所以仅仅会接入必须的三方渠道，按此要求，则聚合广告SDK对三方对依赖，需做到可插拔式，不能对三方有强依赖，本文探索iOS的几种实现方式，并分析其优缺点。
-方案一利用iOS的runtime机制，反射所有的方法调用、delegate注册等，做到对三方广告不存在明文的代码调用，以此做到可插拔式。
-案例Delegate操作获取Delegate
-1Protocol *protocol = [RunTimeTools objc_allocateProtocol:&quot;GADIn...
+                前言本文介绍下，如何通过Wechat Social模块接入钉钉登录系统，并禁掉登录界面的注册功能。
+wordpress版本：5.9.3
+流程钉钉账号申请
+进入钉钉开发者后台
+开发者后台统一登录 - 钉钉统一身份认证
+
+选择回到旧版本
+
+由于新版本的界面下，“应用开发”模块下，只有“企业内部开发”、“第三方企业应用”、“第三方个人应用”，没有“移动接入应用”模块，
+
+返回旧版本后，点击应用开发模块
+
+
+点击登录，点击“创建扫码登录应用授权”
+
+
+点击新建后，填写相关信息
+
+
+
+WordPress相关设置
+部署WordPress.org
+
+安装Wechat Social插件
+
+设置Wecha...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/04/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/04</span>
+                <div class="abstract-date" title="Last updated: 2022/04/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/17</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="广告技术">广告技术</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="通用">通用</a>
     
 </div>
 
