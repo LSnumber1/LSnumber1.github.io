@@ -19,18 +19,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://lsnumber1.github.io/index.html">
+    <meta name="description" content="协变和逆变概念协变：使用比原始指定的派生类型的派生程度更大（更具体的）的类型 逆变：使用比原始指定的派生类型的派生程度更小（不太具体的）的类型  协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换  协变假如定义个基类Base，子类：Derived 协变会保留分配兼容性。相当于Base &#x3D; Derived。 对比上边的概念：使用比原始指定的派生类型（Base）的派生程度更大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# 协变和逆变">
+<meta property="og:url" content="https://lsnumber1.github.io/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="协变和逆变概念协变：使用比原始指定的派生类型的派生程度更大（更具体的）的类型 逆变：使用比原始指定的派生类型的派生程度更小（不太具体的）的类型  协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换  协变假如定义个基类Base，子类：Derived 协变会保留分配兼容性。相当于Base &#x3D; Derived。 对比上边的概念：使用比原始指定的派生类型（Base）的派生程度更大">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-20T11:45:25.000Z">
+<meta property="article:modified_time" content="2022-11-20T11:47:19.750Z">
 <meta property="article:author" content="刘帅">
+<meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>刘帅的博客</title>
+    <title>C# 协变和逆变 · 刘帅的博客</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -217,10 +222,10 @@
         }
     </script>
     
-        <body class="home-body">
+        <body class="post-body">
     
         <!-- header -->
-        <header class="header header-mobile index-header">
+        <header class="header header-mobile">
     <!-- top read progress line -->
     <div class="header-element">
         <div class="read-progress"></div>
@@ -248,10 +253,21 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">刘帅的博客</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">C# 协变和逆变</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
-        <footer class="footer-fixed index-footer-fixed">
+        <footer class="footer-fixed">
     <!-- back to top button -->
     <div class="footer-fixed-element">
         
@@ -281,17 +297,17 @@
     <!-- 主页  -->
     
         
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                刘帅的博客
-            <!-- 文章页  -->
+                C# 协变和逆变
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -299,12 +315,54 @@
             <!-- 主页副标题  -->
             
                 
-                    未有潮生,亦无潮落
-                
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">578</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/11/20</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -434,387 +492,96 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="协变和逆变"><a href="#协变和逆变" class="headerlink" title="协变和逆变"></a>协变和逆变</h1><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>协变：使用比原始指定的派生类型的派生程度更大（更具体的）的类型</p>
+<p>逆变：使用比原始指定的派生类型的派生程度更小（不太具体的）的类型</p>
+<blockquote>
+<p>协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换</p>
+</blockquote>
+<h1 id="协变"><a href="#协变" class="headerlink" title="协变"></a>协变</h1><p>假如定义个基类Base，子类：Derived</p>
+<p>协变会保留分配兼容性。相当于Base &#x3D; Derived。</p>
+<p>对比上边的概念：使用比原始指定的派生类型（Base）的派生程度更大的类型（Derived）</p>
+<p>如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; strings = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">IEnumerable&lt;<span class="built_in">object</span>&gt; objects = strings;</span><br></pre></td></tr></table></figure>
+
+<p>基类为object，子类为string。</p>
+<p>使用比原始指定的派生类型（object）的派生程度更大的类型（string）。换种理解方法，<strong>IEnumerable<object><strong>需要的是object类型，但是指定一个派生类string提供给</strong>IEnumerable<object><strong>也是满足的。因为符合</strong>里氏替换原则，</strong>即：父类出现的地方，子类都可以进行替换。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义协变</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">         ICustomCovariant&lt;<span class="built_in">object</span>&gt; o = <span class="keyword">new</span> CustomCovariant&lt;<span class="built_in">string</span>&gt;();           </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ICustomCovariant</span>&lt;<span class="keyword">out</span> <span class="title">T</span>&gt; &#123;</span><br><span class="line">      <span class="function">T <span class="title">Get</span>()</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CustomCovariant</span>&lt;<span class="title">T</span>&gt; :<span class="title">ICustomCovariant</span>&lt;<span class="title">T</span>&gt; &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> T <span class="title">Get</span>()</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">default</span>(T);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a>逆变</h1><p>逆变不保留分配兼容性。相当于Derived &#x3D; Base；</p>
+<p>对比上边的概念：使用比原始指定的派生类型（Derived）的派生程度更小的类型（Base）</p>
+<p>如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetObject</span>(<span class="params"><span class="built_in">object</span> o</span>)</span>&#123;&#125;</span><br><span class="line">Action&lt;<span class="built_in">object</span>&gt; actObject = SetObject;</span><br><span class="line">Action&lt;<span class="built_in">string</span>&gt; actString = actObject;</span><br></pre></td></tr></table></figure>
+
+<p>基类为object，子类为string</p>
+<p>使用比原始指定的派生类型（string）的派生程度更小的类型（object）。</p>
+<p>换种理解方法：</p>
+<p>Action<string> 需要的string类型，但是指定一个object给他。 这样是不兼容的，因为有些string的方法则无法进行使用了，相当于子类的一些方法无法使用了，所以说是不兼容的。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义逆变</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">         IContravariant&lt;<span class="built_in">string</span>&gt; <span class="number">0</span> = <span class="keyword">new</span> CustomContravariant&lt;<span class="built_in">object</span>&gt;();          </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IContravariant</span>&lt;<span class="keyword">in</span> <span class="title">T</span>&gt; &#123;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">Get</span>(<span class="params">T t</span>)</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CustomContravariant</span>&lt;<span class="title">T</span>&gt; : <span class="title">IContravariant</span>&lt;<span class="title">T</span>&gt; &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Get</span>(<span class="params">T t</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/covariance-contravariance/">https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/covariance-contravariance/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15296378/4907653">https://blog.51cto.com/u_15296378&#x2F;4907653</a></p>
+
+    </article>
+    <!-- license -->
     
-        
-        
-        
-        
+        <div class="license-wrapper">
+            <p>Author：<a href="https://LSnumber1.github.io">刘帅</a>
+            <p>Link：<a href="https://lsnumber1.github.io/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">https://lsnumber1.github.io/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</a>
+            <p>Publish date：<a href="https://lsnumber1.github.io/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">November 20th 2022, 7:45:25 pm</a>
+            <p>Update date：<a href="https://lsnumber1.github.io/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">November 20th 2022, 7:47:19 pm</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">
-                
-                <span class="abstract-title-text">C# 协变和逆变</span>
-            </a>
-            <div class="abstract-content">
-                协变和逆变概念协变：使用比原始指定的派生类型的派生程度更大（更具体的）的类型
-逆变：使用比原始指定的派生类型的派生程度更小（不太具体的）的类型
-
-协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换
-
-协变假如定义个基类Base，子类：Derived
-协变会保留分配兼容性。相当于Base &#x3D; Derived。
-对比上边的概念：使用比原始指定的派生类型（Base）的派生程度更大的类型（Derived）
-如：
-12IEnumerable&lt;string&gt; strings = new List&lt;string&gt;();IEnumerable&lt;obj...
-            </div>
-            <!-- read more -->
+        </li>
+        <li class="previous">
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/11/20</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/07/16/%E3%80%8A%E5%88%AB%E6%89%BE%E6%9B%BF%E7%BD%AA%E7%BE%8A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" title="《别找替罪羊》读后感">
+                    <div class="prevTitle">《别找替罪羊》读后感</div>
+                </a>
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/16/%E3%80%8A%E5%88%AB%E6%89%BE%E6%9B%BF%E7%BD%AA%E7%BE%8A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-                
-                <span class="abstract-title-text">《别找替罪羊》读后感</span>
-            </a>
-            <div class="abstract-content">
-                读完这本书后，我一直在想，何为盒子？是思维的局限？还是盒子里只有自身利益？
-盒子蒙蔽了我们的双眼，让我们只看到了自己，为自己找到了各种借口，认为一切的失败来源于外部的人或物。我也是深陷此中。
-记得，上篇文章我说过有些项目组难以沟通，存在工作时差等，现在想来自己当时是否处于盒子中呢？答案是显然的，自身已经处于盒子中，由于存在历史偏见，导致无法同等的看待他们，沟通中经常过度保护自身。如果当时可以跳出盒子，把主目标放在“让项目组尽快上线”上，而不是纠结于是谁的问题上，是否会有不一样的结果？
-跳出盒子正式看待这些事时，也可以发现，固然接入中存在很多问题，但是也不可否认的是，他们也是帮我们发现很多...
-            </div>
-            <!-- read more -->
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/16</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="项目管理">项目管理</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/09/%E8%AE%BA%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/">
-                
-                <span class="abstract-title-text">论技术支持</span>
-            </a>
-            <div class="abstract-content">
-                背景本周发生了一起特有意思的事，让我对技术支持有了新的体会，也让我看到了自己内心的不够强大，也针对此事做下回顾总结。
-事件大概是新项目组第一次发包，然后我们提供的SDK供他们接入。实际接入中发现没有按照文档接入，因而存在较多的问题，而项目组上线比较急，所以我们为了保障他们及时上线，就帮助他们解决各种由于“不按照文档接入方式”产生的问题。更有意思的是，凌晨1点时，提出让我们去公司给他们做新需求接口。
-此事让我回想起这个项目组的上个项目，发现当时也是我们帮他们接入的，而这些工作如后台配置等，从职责上来说，是需要项目组自己配置的。
-但是奇怪的是我们发现其他项目组均没有此现象。
-然后，我就想那当...
-            </div>
-            <!-- read more -->
+
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/09">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/09</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="项目管理">项目管理</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/06/28/%E5%87%A4%E5%87%B0%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AAIT%E8%BF%90%E7%BB%B4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BC%A0%E5%A5%87%E6%95%85%E4%BA%8B-%E8%AF%BB%E6%84%9F/">
-                
-                <span class="abstract-title-text">凤凰项目——一个IT运维项目的传奇故事 读感</span>
-            </a>
-            <div class="abstract-content">
-                最近读了《凤凰项目》感触很多，花了三天就读完了，由于我的工作日常中也是存在很多技术支持，书中的早期案例很多好像是按照我的遭遇写的，感触颇多。
-计划外工作
-书中讲到，计划外工作占据了IT的绝多数时间，导致业务往往产生了较多的堆积，最终半成品较多，导致什么事情都没有做好。
-我们作为SDK研发，面对公司的项目组也有同样的问题。接入SDK中，往往会抛出各种问题来，这时我们就需要抛开自己的研发任务，全力去支持项目组。这些频繁的计划外工作，往往会导致我们研发的进度延期。
-针对此情况，考虑建立完善FAQ相关文档，创建标准化排错流程。当标准流程化创建完成后，是否意味着不需要研发来进行协助项目组？根据目前...
-            </div>
-            <!-- read more -->
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/06/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/06/28</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="项目管理">项目管理</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/04/17/Word-Press%E6%8E%A5%E5%85%A5%E9%92%89%E9%92%89%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
-                
-                <span class="abstract-title-text">Word Press接入钉钉扫码登录</span>
-            </a>
-            <div class="abstract-content">
-                前言本文介绍下，如何通过Wechat Social模块接入钉钉登录系统，并禁掉登录界面的注册功能。
-wordpress版本：5.9.3
-流程钉钉账号申请
-进入钉钉开发者后台
-开发者后台统一登录 - 钉钉统一身份认证
 
-选择回到旧版本
-
-由于新版本的界面下，“应用开发”模块下，只有“企业内部开发”、“第三方企业应用”、“第三方个人应用”，没有“移动接入应用”模块，
-
-返回旧版本后，点击应用开发模块
-
-
-点击登录，点击“创建扫码登录应用授权”
-
-
-点击新建后，填写相关信息
-
-
-
-WordPress相关设置
-部署WordPress.org
-
-安装Wechat Social插件
-
-设置Wecha...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/04/17">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/17</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
+        </div>
     
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="通用">通用</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">
-                
-                <span class="abstract-title-text">聚合广告系列-三方聚合方式</span>
-            </a>
-            <div class="abstract-content">
-                目的聚合广告SDK，一般会接很多第三方广告（如Facebook、Admob等），而实际项目需求中，由于对包体积有要求，所以仅仅会接入必须的三方渠道，按此要求，则聚合广告SDK对三方对依赖，需做到可插拔式，不能对三方有强依赖，本文探索iOS的几种实现方式，并分析其优缺点。
-方案一利用iOS的runtime机制，反射所有的方法调用、delegate注册等，做到对三方广告不存在明文的代码调用，以此做到可插拔式。
-案例Delegate操作获取Delegate
-1Protocol *protocol = [RunTimeTools objc_allocateProtocol:&quot;GADIn...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/04/04">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="广告技术">广告技术</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/04/01/hello-world/">
-                
-                <span class="abstract-title-text">Hello World</span>
-            </a>
-            <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo ...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/04/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/01</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-    <!-- paginator  -->
+    <!-- Mathjax -->
     
 </main>
 
                 <!-- profile -->
-                
-                    <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/Misaka.jpg />
-    <div class="profile-name">刘帅</div>
-    
-        <div class="profile-signature">
-            正在努力学习的程序员
-        </div>
-    
-    
-        <div class="profile-social">
-            
-    
-        
-            
-                <a href="mailto:1347966554@qq.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/LSnumber1" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                    
-                    <img class="profile-qr" src="/assets/example_qr.jpeg" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-
-        </div>
-    
-    
-    
-        <div class="profile-link-item">
-            <a href="/about" class="about-me">
-                
-                ABOUT ME
-            </a>
-        </div>
-    
-    
-    
-</div>
-
                 
             </div>
             <footer class="footer footer-unloaded">
@@ -901,6 +668,23 @@ Run server1$ hexo ...
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98"><span class="toc-number">1.</span> <span class="toc-text">协变和逆变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98"><span class="toc-number">3.</span> <span class="toc-text">协变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%8F%98"><span class="toc-number">4.</span> <span class="toc-text">逆变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1153,6 +937,8 @@ Run server1$ hexo ...
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
         
         <!-- mermaid -->
         

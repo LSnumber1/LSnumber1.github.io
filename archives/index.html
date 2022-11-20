@@ -428,6 +428,50 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">
+                
+                <span class="abstract-title-text">C# 协变和逆变</span>
+            </a>
+            <div class="abstract-content">
+                协变和逆变概念协变：使用比原始指定的派生类型的派生程度更大（更具体的）的类型
+逆变：使用比原始指定的派生类型的派生程度更小（不太具体的）的类型
+
+协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换
+
+协变假如定义个基类Base，子类：Derived
+协变会保留分配兼容性。相当于Base &#x3D; Derived。
+对比上边的概念：使用比原始指定的派生类型（Base）的派生程度更大的类型（Derived）
+如：
+12IEnumerable&lt;string&gt; strings = new List&lt;string&gt;();IEnumerable&lt;obj...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/11/20">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/11/20</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2022/07/16/%E3%80%8A%E5%88%AB%E6%89%BE%E6%9B%BF%E7%BD%AA%E7%BE%8A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
                 
                 <span class="abstract-title-text">《别找替罪羊》读后感</span>
@@ -799,7 +843,18 @@ Run server1$ hexo ...
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
         
         
         
@@ -822,7 +877,7 @@ Run server1$ hexo ...
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 6
+        Total : 7
         </div>
         <!-- search  -->
         
@@ -868,6 +923,12 @@ Run server1$ hexo ...
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/C-%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/">C# 协变和逆变</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">07/16</span>
             <a class="archive-post-title" href="/2022/07/16/%E3%80%8A%E5%88%AB%E6%89%BE%E6%9B%BF%E7%BD%AA%E7%BE%8A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">《别找替罪羊》读后感</a>
         </li>
@@ -911,6 +972,11 @@ Run server1$ hexo ...
                 广告技术
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Unity">
+                <span class="iconfont-archer">&#xe606;</span>
+                Unity
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -940,6 +1006,11 @@ Run server1$ hexo ...
         <span class="sidebar-category-name" data-categories="SDK">
             <span class="iconfont-archer">&#xe60a;</span>
             SDK
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="C#">
+            <span class="iconfont-archer">&#xe60a;</span>
+            C#
         </span>
     
     </div>
