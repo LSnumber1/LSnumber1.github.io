@@ -428,6 +428,44 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2022/12/03/C-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/">
+                
+                <span class="abstract-title-text">C#扩展方法</span>
+            </a>
+            <div class="abstract-content">
+                背景最近查看QFramework源代码时，对一块的语法很疑惑，明明一个类没有被引用，为何此类的方法被调用了呢。细查之下，原来是C#的扩展语法的概念。
+扩展方法扩展方法是向现有的类型中添加方法，而不用创建新的派生类型。
+案例一：向string类中添加新的方法，用于为字符串添加前缀
+123456789101112131415161718192021222324public static class stringExtension    &#123;        public static string AddPrefix(this string str)        &#123;    ...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/12/03">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/12/03</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Unity">Unity</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2022/11/26/Unity2019-%E9%80%82%E9%85%8DiOS/">
                 
                 <span class="abstract-title-text">Unity2019-适配iOS</span>
@@ -896,7 +934,20 @@ Run server1$ hexo ...
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -931,7 +982,7 @@ Run server1$ hexo ...
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 8
+        Total : 9
         </div>
         <!-- search  -->
         
@@ -945,6 +996,12 @@ Run server1$ hexo ...
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/03</span>
+            <a class="archive-post-title" href="/2022/12/03/C-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/">C#扩展方法</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">11/26</span>
@@ -967,6 +1024,12 @@ Run server1$ hexo ...
         <li class="archive-post-item">
             <span class="archive-post-date">07/09</span>
             <a class="archive-post-title" href="/2022/07/09/%E8%AE%BA%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/">论技术支持</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/28</span>
+            <a class="archive-post-title" href="/2022/06/28/%E5%87%A4%E5%87%B0%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AAIT%E8%BF%90%E7%BB%B4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BC%A0%E5%A5%87%E6%95%85%E4%BA%8B-%E8%AF%BB%E6%84%9F/">凤凰项目——一个IT运维项目的传奇故事 读感</a>
         </li>
     
         
@@ -1001,12 +1064,6 @@ Run server1$ hexo ...
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">06/28</span>
-            <a class="archive-post-title" href="/2022/06/28/%E5%87%A4%E5%87%B0%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AAIT%E8%BF%90%E7%BB%B4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BC%A0%E5%A5%87%E6%95%85%E4%BA%8B-%E8%AF%BB%E6%84%9F/">凤凰项目——一个IT运维项目的传奇故事 读感</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">04/04</span>
             <a class="archive-post-title" href="/2022/04/04/%E8%81%9A%E5%90%88%E5%B9%BF%E5%91%8A%E7%B3%BB%E5%88%97-%E4%B8%89%E6%96%B9%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F/">聚合广告系列-三方聚合方式</a>
         </li>
@@ -1022,14 +1079,14 @@ Run server1$ hexo ...
                 Unity
             </span>
         
-            <span class="sidebar-tag-name" data-tags="通用">
-                <span class="iconfont-archer">&#xe606;</span>
-                通用
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="项目管理">
                 <span class="iconfont-archer">&#xe606;</span>
                 项目管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="通用">
+                <span class="iconfont-archer">&#xe606;</span>
+                通用
             </span>
         
             <span class="sidebar-tag-name" data-tags="广告技术">
@@ -1058,14 +1115,14 @@ Run server1$ hexo ...
             iOS
         </span>
     
-        <span class="sidebar-category-name" data-categories="通用">
-            <span class="iconfont-archer">&#xe60a;</span>
-            通用
-        </span>
-    
         <span class="sidebar-category-name" data-categories="杂谈">
             <span class="iconfont-archer">&#xe60a;</span>
             杂谈
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="通用">
+            <span class="iconfont-archer">&#xe60a;</span>
+            通用
         </span>
     
         <span class="sidebar-category-name" data-categories="SDK">
